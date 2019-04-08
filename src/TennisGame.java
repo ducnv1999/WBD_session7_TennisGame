@@ -1,8 +1,8 @@
-public class TennisGame {
+class TennisGame {
 
-    public static String getScore(String player1Name, String player2Name, int m_score1, int m_score2) {
-        String score = "";
-        int tempScore=0;
+    static String getScore(int m_score1, int m_score2) {
+        String score;
+        int tempScore;
         if (m_score1==m_score2)
         {
             switch (m_score1)
@@ -35,26 +35,28 @@ public class TennisGame {
         }
         else
         {
-            for (int i=1; i<3; i++)
+            StringBuilder scoreBuilder = new StringBuilder();
+            for (int i = 1; i<3; i++)
             {
                 if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
+                else { scoreBuilder.append("-"); tempScore = m_score2;}
                 switch(tempScore)
                 {
                     case 0:
-                        score+="Love";
+                        scoreBuilder.append("Love");
                         break;
                     case 1:
-                        score+="Fifteen";
+                        scoreBuilder.append("Fifteen");
                         break;
                     case 2:
-                        score+="Thirty";
+                        scoreBuilder.append("Thirty");
                         break;
                     case 3:
-                        score+="Forty";
+                        scoreBuilder.append("Forty");
                         break;
                 }
             }
+            score = scoreBuilder.toString();
         }
         return score;
     }
